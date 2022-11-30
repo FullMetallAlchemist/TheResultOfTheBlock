@@ -3,7 +3,7 @@
     string[] array = new string[size];
     for (int i = 0; i < size; i++)
     {
-        Console.Write($"Input a {i+1} value: ");
+        Console.Write($"Input a {i + 1} value: ");
         array[i] = Convert.ToString(Console.ReadLine());
     }
     return array;
@@ -11,14 +11,20 @@
 
 string[] ThreeSymbolsArray(string[] array)
 {
-    string[] resultarray = new string[array.Length];
+    int k = 0;
+    for (int i = 0; i < array.Length; i++)
+        if (array[i].Length <= 3)
+        {
+            k++;
+        }
+    string[] resultarray = new string[k];
     int j = 0;
-        for (int i = 0; i < array.Length; i++)
-            if (array[i].Length <= 3 )
-            {
-                resultarray[j] = array[i];
-                j++;
-            }
+    for (int i = 0; i < array.Length; i++)
+        if (array[i].Length <= 3)
+        {
+            resultarray[j] = array[i];
+            j++;
+        }
     return resultarray;
 }
 
@@ -27,7 +33,9 @@ void ShowArray(string[] array)
     Console.Write("Array is: ");
 
     for (int i = 0; i < array.Length; i++)
-        Console.Write(array[i] + " , ");
+        if (i != array.Length - 1)
+        Console.Write(array[i] + ",");
+        else Console.Write(array[i]);
     Console.Write("   <]:-o) \n");
 }
 
